@@ -31,6 +31,7 @@ def parse_results(html):
         
         program = {
             'progid' : ProgId,
+            'header1': Header1,
         }
         
         programs.append(program)
