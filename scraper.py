@@ -2,7 +2,7 @@ import scraperwiki
 import re
 import mechanize
 import datetime
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
 starting_page = 'https://www.caahep.org/Students/Find-a-Program.aspx'
 
