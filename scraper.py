@@ -48,7 +48,7 @@ def parse_results(html):
         if (OffsetA == 1) and (ProgOutcomes[:4] != "http"):
             ProgOutcomes = "http://" + ProgOutcomes
             
-        ProgDirector = str(ProgInfo.contents[16+Offset1+2*OffsetA].string)
+        ProgDirector = str(ProgInfo.contents[16+Offset1+2*OffsetA].string)[2:]
         
         
         ProgPhone = str(ProgInfo.find_all('a')[0+OffsetA].find('span').string)
