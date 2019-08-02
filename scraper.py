@@ -97,7 +97,7 @@ def get_pages():
     options = webdriver.ChromeOptions()
     options.binary_location = '/usr/bin/google-chrome'
     options.add_argument('headless')
-    br = webdriver.Chrome(chrome_options=options)
+    br = webdriver.Chrome(chrome_options=options, executable_path='/usr/local/bin/chromedriver')
     
     br.get(starting_page)
     for p in range(85, 87):
