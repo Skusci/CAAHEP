@@ -1,6 +1,6 @@
 import scraperwiki    
 import re
-from selenium import webdriver
+from splinter import Browser
 import datetime
 from bs4 import BeautifulSoup
 from collections import OrderedDict
@@ -93,20 +93,19 @@ def get_pages():
     """
     Returns the HTML of all pages
     """
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--disable-site-isolation-trials')
-    options.add_argument('--no-sandbox');
-    
+    with Browser("phantomjs") as browser:
+    # Optional, but make sure large enough that responsive pages don't
+    # hide elements on you...
+    browser.driver.set_window_size(1280, 1024)
 
-    br = webdriver.Chrome(chrome_options=options)
-    
-    br.get(starting_page)
+    # Open the page you want...
+    browser.visit(starting_page)
+
     for p in range(85, 87):
-        br.execute_script("__doPostBack('p$lt$WebPartZone6$Content$pageplaceholder$p$lt$WebPartZone2$Search$ProgramList$repItems$pager','" + str(p) + "')" )
+        browser.execute_script("__doPostBack('p$lt$WebPartZone6$Content$pageplaceholder$p$lt$WebPartZone2$Search$ProgramList$repItems$pager','" + str(p) + "')" )
         print 'Retrieving page %s' % p
-        pages.append(br.page_source)
+        time.sleep(2)
+        pages.append(browser.html)
     return pages
 
 
