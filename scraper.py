@@ -56,7 +56,6 @@ def parse_results(html):
         
         
         ProgPhone = str(ProgInfo.find_all('a')[0+OffsetA].find('span').string)
-        ProgPhone = ProgPhone[:3] + '.' + ProgPhone[3:6] + '.' + ProgPhone[6:]
         
         ProgEmail = str(ProgInfo.find_all('a')[1+OffsetA].string)
         ProgAward = str(ProgInfo.find_all('a')[2+OffsetA].get('href'))
