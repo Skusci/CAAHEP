@@ -37,9 +37,9 @@ def parse_results(html):
         ProgAccredDate = str(ProgInfo.contents[1].string)
         ProgDegrees = str(ProgInfo.contents[1].string)
         ProgDirector = str(ProgInfo.contents[1].string)
-        ProgPhone = ProgInfo.find_all('a')[0].string
-        ProgEmail = ProgInfo.find_all('a')[1].string
-        ProgAward = ProgInfo.find_all('a')[2].get('href')
+        ProgPhone = str(ProgInfo.find_all('a')[0].string)
+        ProgEmail = str(ProgInfo.find_all('a')[1].string)
+        ProgAward = str(ProgInfo.find_all('a')[2].get('href'))
         
         
         Website = str(r.find('h4', attrs={'class' : 'website'}).contents[0].string)
