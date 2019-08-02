@@ -34,9 +34,9 @@ def parse_results(html):
         ProgInfo = r.find('div', attrs={'class' : 'program-info col-md-6 col-sm-6 col-xs-6'}).find('p')
         
         ProgStatus = str(ProgInfo.contents[1].string)
-        ProgAccredDate = str(ProgInfo.contents[1].string)
-        ProgDegrees = str(ProgInfo.contents[1].string)
-        ProgDirector = str(ProgInfo.contents[1].string)
+        ProgAccredDate = ""
+        ProgDegrees = ""
+        ProgDirector = ""
         ProgPhone = str(ProgInfo.find_all('a')[0].string)
         ProgEmail = str(ProgInfo.find_all('a')[1].string)
         ProgAward = str(ProgInfo.find_all('a')[2].get('href'))
