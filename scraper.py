@@ -93,11 +93,12 @@ def get_pages():
     """
     Returns the HTML of all pages
     """
-    
-    options = webdriver.ChromeOptions()
-    options.binary_location = '/usr/bin/google-chrome'
-    options.add_argument('headless')
-    br = webdriver.Chrome(chrome_options=options, executable_path='/usr/local/bin/chromedriver')
+    options2 = webdriver.ChromeOptions()
+    options2.add_argument('--headless')
+    options2.add_argument('--disable-dev-shm-usage')
+    options2.add_argument('--no-sandbox')
+
+    br = webdriver.Chrome(chrome_options=options)
     
     br.get(starting_page)
     for p in range(85, 87):
