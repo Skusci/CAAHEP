@@ -33,15 +33,21 @@ def parse_results(html):
         
         ProgInfo = r.find('div', attrs={'class' : 'program-info col-md-6 col-sm-6 col-xs-6'}).find('p')
         
-        Offset = 1 if (str(ProgInfo.contents[1].string) == "Status") else 0
+        Offset1 = 1 if (str(ProgInfo.contents[1].string) == "Status") else 0
+        OffsetA = 1 if (str(ProgInfo.find_all('a')[0].string) == "Program Outcomes" ) else 0
         
-        ProgStatus = str(ProgInfo.contents[1+Offset].string)
-        ProgAccredDate = ""
+        
+        ProgStatus = str(ProgInfo.contents[1+Offset1].string)[2:]
+        ProgAccredDate = str(ProgInfo.contents[3+Offset1].string)
         ProgDegrees = ""
         ProgDirector = ""
-        ProgPhone = str(ProgInfo.find_all('a')[0].string)
-        ProgEmail = str(ProgInfo.find_all('a')[1].string)
-        ProgAward = str(ProgInfo.find_all('a')[2].get('href'))
+        
+        ProgOutComes = str(ProgInfo.find_all('a')[0].string) if (OffsetA == 1) else "Unavailable"
+        ProgPhone = str(ProgInfo.find_all('a')[0+OffsetA].string)
+        ProgPhone = ProgPhone[:2] + "." + ProgPhone[3:5] + "." + ProgPhone[6:]
+        
+        ProgEmail = str(ProgInfo.find_all('a')[1+OffsetA].string)
+        ProgAward = str(ProgInfo.find_all('a')[2+OffsetA].get('href'))
         
         
         Website = str(r.find('h4', attrs={'class' : 'website'}).contents[0].string)
