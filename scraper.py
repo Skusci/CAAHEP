@@ -120,4 +120,4 @@ for page in pages:
 
 print 'Found %s results, saving in scraperwiki' % len(results)
 
-scraperwiki.sqlite.save(['ProgramId'], results)
+scraperwiki.sqlite.save(['ProgramId'], data=results)
