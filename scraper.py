@@ -84,6 +84,7 @@ def parse_results(html):
             ('Website', Website),
         ])
         
+        scraperwiki.sqlite.save(['ProgramId'], program)
         programs.append(program)
     return programs
 
@@ -98,7 +99,7 @@ def get_pages():
     br.open(starting_page)
     # parse the page count and retrieve pages
     pages = []
-    for p in range(1, 89):
+    for p in range(1, 90):
         print 'Retrieving page %s' % p
         br.select_form(nr=0)
         br.form.set_all_readonly(False)
@@ -107,8 +108,6 @@ def get_pages():
         # remove the "Search" (type=submit) input from the form, otherwise we get the first page of results over and over
         response = br.submit()
         pages.append(response.read())
-        
-    scraperwiki.sqlite.save(['ProgramId'], pages)
     return pages
 
 
