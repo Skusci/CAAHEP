@@ -39,7 +39,7 @@ def parse_results(html):
             'website': Website,
         }
         
-        programs.append(incident)
+        programs.append(program)
     return programs
 
 
