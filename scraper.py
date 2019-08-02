@@ -24,8 +24,10 @@ def parse_results(html):
         Profession = str(r.find_all('h3', attrs={'class' : 'cbp-nttrigger col-md-3 col-sm-3 col-xs-3'})[0].string)
         Concentration = str(r.find_all('h3', attrs={'class' : 'cbp-nttrigger col-md-3 col-sm-3 col-xs-3'})[1].string)
         
+        Address = r.find('div', attrs={'class' : 'program-address col-md-6 col-sm-6 col-xs-6'}).find('p')
+        Address1 =  str(Address.find_all('br')[0])
+
         
-        Address = str(r.find('div', attrs={'class' : 'program-address col-md-6 col-sm-6 col-xs-6'}).contents[0].string)
         ProgInfo = str(r.find('div', attrs={'class' : 'program-info col-md-6 col-sm-6 col-xs-6'}).contents[0].string)
         
         
@@ -39,7 +41,7 @@ def parse_results(html):
             'Institution Name': Institution,
             'Profession': Profession,
             'Concentration': Concentration,
-            'address': Address,
+            'Address Line 1': Address1,
             'proginfo': ProgInfo,
             'Website': Website,
         }
