@@ -32,6 +32,8 @@ def parse_results(html):
 
         
         ProgInfo = r.find('div', attrs={'class' : 'program-info col-md-6 col-sm-6 col-xs-6'}).find('p')
+        if ProgInfo[:4] != "href":
+            ProgInfo = "href://" + ProgInfo
         
         Offset1 = 1 if (str(ProgInfo.contents[1].string) == "Status") else 0
         OffsetA = 1 if (str(ProgInfo.find_all('a')[0].string) == "Program Outcomes" ) else 0
