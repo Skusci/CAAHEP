@@ -100,7 +100,7 @@ def get_pages():
     options.add_argument('--no-sandbox');
     
 
-    br = webdriver.Chrome(chrome_options=options, executable_path='/usr/local/bin/chromedriver')
+    br = webdriver.Chrome(chrome_options=options)
     
     br.get(starting_page)
     for p in range(85, 87):
