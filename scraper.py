@@ -1,6 +1,8 @@
 import scraperwiki    
 import re
-from splinter import Browser
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import TimeoutException, WebDriverException
 import datetime
 from bs4 import BeautifulSoup
 from collections import OrderedDict
@@ -94,21 +96,27 @@ def get_pages():
     Returns the HTML of all pages
     """
 
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-gpu")
+
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("start-maximized")
+    chrome_options.add_argument("disable-infobars")
+    chrome_options.add_argument("--disable-extensions")
     # Optional, but make sure large enough that responsive pages don't
     # hide elements on you...
-        
-    executable_path = {'executable_path':'/usr/bin/phantomjs'}
-    browser = Browser('chrome')
-    browser.driver.set_window_size(1280, 1024)
 
+    br = webdriver.Chrome(chrome_options=chrome_options,executable_path='/usr/local/bin/chromedriver')
+   
     # Open the page you want...
-    browser.visit(starting_page)
+    br.get(starting_page)
 
     for p in range(85, 87):
-        browser.execute_script("__doPostBack('p$lt$WebPartZone6$Content$pageplaceholder$p$lt$WebPartZone2$Search$ProgramList$repItems$pager','" + str(p) + "')" )
+        br.execute_script("__doPostBack('p$lt$WebPartZone6$Content$pageplaceholder$p$lt$WebPartZone2$Search$ProgramList$repItems$pager','" + str(p) + "')" )
         print 'Retrieving page %s' % p
         time.sleep(2)
-        pages.append(browser.html)
+        pages.append(br.page_source)
     return pages
 
 
