@@ -98,7 +98,7 @@ def get_pages():
     # hide elements on you...
         
     executable_path = {'executable_path':'/usr/bin/phantomjs'}
-    browser = Browser('phantomjs', **executable_path)
+    browser = Browser('chrome')
     browser.driver.set_window_size(1280, 1024)
 
     # Open the page you want...
