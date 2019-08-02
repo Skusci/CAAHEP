@@ -97,7 +97,7 @@ def get_pages():
     br.get(starting_page)
     for p in range(85, 87):
         br.execute_script("__doPostBack('p$lt$WebPartZone6$Content$pageplaceholder$p$lt$WebPartZone2$Search$ProgramList$repItems$pager','" + str(p) + "')" 
-        print 'Retrieving page %s' % p
+
         pages.append(br.page_source)
     return pages
 
