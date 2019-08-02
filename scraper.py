@@ -31,8 +31,15 @@ def parse_results(html):
         Address4 =  str(Address.contents[6].string)
 
         
-        ProgInfo = str(r.find('div', attrs={'class' : 'program-info col-md-6 col-sm-6 col-xs-6'}).contents[0].string)
+        ProgInfo = r.find('div', attrs={'class' : 'program-info col-md-6 col-sm-6 col-xs-6'}).find('p')
         
+        ProgStatus = str(ProgInfo.contents[1].string)
+        ProgAccredDate = str(ProgInfo.contents[1].string)
+        ProgDegrees = str(ProgInfo.contents[1].string)
+        ProgDirector = str(ProgInfo.contents[1].string)
+        ProgPhone = ProgInfo.find_all('a')[0].string
+        ProgEmail = ProgInfo.find_all('a')[1].string
+        ProgAward = ProgInfo.find_all('a')[2].get('href')
         
         
         Website = str(r.find('h4', attrs={'class' : 'website'}).contents[0].string)
@@ -48,7 +55,13 @@ def parse_results(html):
             'Address Line 2': Address2,
             'Address Line 3': Address3,
             'Address Line 4': Address4,
-            'proginfo': ProgInfo,
+            'Program Status': ProgStatus,
+            'Accredation Date': ProgAccredDate,
+            'Degrees' : ProgDegrees,
+            'Director': ProgDirector,
+            'Phone' :ProgPhone,
+            'E-Mail' : ProgEmail,
+            'Award Link' : ProgAward,
             'Website': Website,
         }
         
