@@ -17,28 +17,31 @@ def parse_results(html):
 
     programs = []
     for r in programlist.findAll('li', recursive=False):
-        ProgId = r.get('id');
-        Header1 = str(r.find('h5', attrs={'class': 'cbp-nttrigger cbp-first col-md-2 col-sm-3 col-xs-3'}).contents[0].string)
-        Header2 = str(r.find('span', attrs={'class': 'StateTitle'}).string)
-        Header3 = str(r.find('h3', attrs={'class' : 'cbp-nttrigger col-md-4 col-sm-3 col-xs-3'}).string)
-        Header4 = str(r.find_all('h3', attrs={'class' : 'cbp-nttrigger col-md-3 col-sm-3 col-xs-3'})[0].string)
-        Header5 = str(r.find_all('h3', attrs={'class' : 'cbp-nttrigger col-md-3 col-sm-3 col-xs-3'})[1].string)
+        ProgramId = r.get('id')[7:];
+        City = str(r.find('h5', attrs={'class': 'cbp-nttrigger cbp-first col-md-2 col-sm-3 col-xs-3'}).contents[0].string)
+        State = str(r.find('span', attrs={'class': 'StateTitle'}).string)
+        Institution = str(r.find('h3', attrs={'class' : 'cbp-nttrigger col-md-4 col-sm-3 col-xs-3'}).string)
+        Profession = str(r.find_all('h3', attrs={'class' : 'cbp-nttrigger col-md-3 col-sm-3 col-xs-3'})[0].string)
+        Concentration = str(r.find_all('h3', attrs={'class' : 'cbp-nttrigger col-md-3 col-sm-3 col-xs-3'})[1].string)
+        
         
         Address = str(r.find('div', attrs={'class' : 'program-address col-md-6 col-sm-6 col-xs-6'}).contents[0].string)
-        
         ProgInfo = str(r.find('div', attrs={'class' : 'program-info col-md-6 col-sm-6 col-xs-6'}).contents[0].string)
+        
+        
+        
         Website = str(r.find('h4', attrs={'class' : 'website'}).contents[0].string)
         
         program = {
-            'progid' : ProgId,
-            'header1': Header1,
-            'header2': Header2,
-            'header3': Header3,
-            'header4': Header4,
-            'header5': Header5,
+            'ProgramId' : ProgramId,
+            'City': City,
+            'State': State,
+            'Institution Name': Institution,
+            'Profession': Profession,
+            'Concentration': Concentration,
             'address': Address,
             'proginfo': ProgInfo,
-            'website': Website,
+            'Website': Website,
         }
         
         programs.append(program)
