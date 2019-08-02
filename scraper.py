@@ -3,7 +3,7 @@ import re
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException, WebDriverException
-import datetime
+import time
 from bs4 import BeautifulSoup
 from collections import OrderedDict
 
