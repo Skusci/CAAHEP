@@ -32,8 +32,7 @@ def parse_results(html):
 
         
         ProgInfo = r.find('div', attrs={'class' : 'program-info col-md-6 col-sm-6 col-xs-6'}).find('p')
-        if ProgInfo[:4] != "href":
-            ProgInfo = "href://" + ProgInfo
+        
         
         Offset1 = 1 if (str(ProgInfo.contents[1].string) == "Status") else 0
         OffsetA = 1 if (str(ProgInfo.find_all('a')[0].string) == "Program Outcomes" ) else 0
@@ -45,6 +44,11 @@ def parse_results(html):
         ProgDirector = str(ProgInfo.contents[16+Offset1-3*OffsetA].string)
         
         ProgOutcomes = str(ProgInfo.find_all('a')[0].get('href')) if (OffsetA == 1) else "Unavailable"
+        
+        if (OffsetA == 1) && (ProgOutcomes[:4] != "href"):
+            ProgOutcomes = "href://" + ProgOutcomes
+        
+        
         ProgPhone = str(ProgInfo.find_all('a')[0+OffsetA].find('span').string)
         ProgPhone = ProgPhone[:3] + '.' + ProgPhone[3:6] + '.' + ProgPhone[6:]
         
