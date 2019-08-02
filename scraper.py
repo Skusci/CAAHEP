@@ -1,3 +1,4 @@
+import uuid
 import scraperwiki    
 import re
 from selenium import webdriver
@@ -20,7 +21,7 @@ def parse_results(html):
 
     programs = []
     for r in programlist.findAll('li', recursive=False):
-        ProgramId = r.get('id')[7:];
+        ProgramId = str(uuid.uuid4())
         City = str(r.find('h5', attrs={'class': 'cbp-nttrigger cbp-first col-md-2 col-sm-3 col-xs-3'}).contents[0].string)
         State = str(r.find('span', attrs={'class': 'StateTitle'}).string)
         Institution = str(r.find('h3', attrs={'class' : 'cbp-nttrigger col-md-4 col-sm-3 col-xs-3'}).string)
@@ -116,10 +117,10 @@ def get_pages():
     # Open the page you want...
     br.get(starting_page)
     pages = []
-    for p in range(85, 90):
+    for p in range(1, 90):
         br.execute_script("__doPostBack('p$lt$WebPartZone6$Content$pageplaceholder$p$lt$WebPartZone2$Search$ProgramList$repItems$pager','" + str(p) + "')" )
         print("Retrieving page" + str(p))
-        time.sleep(2)
+        time.sleep(5)
         pages.append(br.page_source)
     return pages
 
