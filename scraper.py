@@ -114,7 +114,7 @@ def get_pages():
 
     for p in range(85, 87):
         br.execute_script("__doPostBack('p$lt$WebPartZone6$Content$pageplaceholder$p$lt$WebPartZone2$Search$ProgramList$repItems$pager','" + str(p) + "')" )
-        print("Retrieving page" + p)
+        print("Retrieving page" + str(p))
         time.sleep(2)
         pages.append(br.page_source)
     return pages
@@ -123,11 +123,11 @@ def get_pages():
 
 print('Retrieving results')
 pages = get_pages()
-print("Parsing" + len(pages) + " pages of results")
+print("Parsing" + str(len(pages)) + " pages of results")
 results = []
 for page in pages:
     results.extend(parse_results(page))
 
-print("Found " + len(results) + " results, saved in scraperwiki")
+print("Found " + str(len(results)) + " results, saved in scraperwiki")
 
 
