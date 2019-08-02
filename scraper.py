@@ -71,6 +71,7 @@ def parse_results(html):
             'Address Line 2': Address2,
             'Address Line 3': Address3,
             'Address Line 4': Address4,
+            'Address Line 5': Address5,
             'Program Status': ProgStatus,
             'Accredation Date': ProgAccredDate,
             'Degrees' : ProgDegrees,
