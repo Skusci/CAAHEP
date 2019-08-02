@@ -94,18 +94,18 @@ def get_pages():
     Returns the HTML of all pages
     """
     with Browser("phantomjs") as browser:
-    # Optional, but make sure large enough that responsive pages don't
-    # hide elements on you...
-    browser.driver.set_window_size(1280, 1024)
+        # Optional, but make sure large enough that responsive pages don't
+        # hide elements on you...
+        browser.driver.set_window_size(1280, 1024)
 
-    # Open the page you want...
-    browser.visit(starting_page)
+        # Open the page you want...
+        browser.visit(starting_page)
 
-    for p in range(85, 87):
-        browser.execute_script("__doPostBack('p$lt$WebPartZone6$Content$pageplaceholder$p$lt$WebPartZone2$Search$ProgramList$repItems$pager','" + str(p) + "')" )
-        print 'Retrieving page %s' % p
-        time.sleep(2)
-        pages.append(browser.html)
+        for p in range(85, 87):
+            browser.execute_script("__doPostBack('p$lt$WebPartZone6$Content$pageplaceholder$p$lt$WebPartZone2$Search$ProgramList$repItems$pager','" + str(p) + "')" )
+            print 'Retrieving page %s' % p
+            time.sleep(2)
+            pages.append(browser.html)
     return pages
 
 
