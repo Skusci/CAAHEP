@@ -40,9 +40,9 @@ def parse_results(html):
         ProgStatus = str(ProgInfo.contents[1+Offset1].string)[2:]
         ProgAccredDate = str(ProgInfo.contents[5+Offset1].string)[2:]
         ProgDegrees = str(ProgInfo.contents[10+Offset1].string)
-        ProgDirector = str(ProgInfo.contents[16+Offset1-OffsetA].string)
+        ProgDirector = str(ProgInfo.contents[16+Offset1-2*OffsetA].string)
         
-        ProgOutcomes = str(ProgInfo.find_all('a')[0].string) if (OffsetA == 1) else "Unavailable"
+        ProgOutcomes = str(ProgInfo.find_all('a')[0].get('href')) if (OffsetA == 1) else "Unavailable"
         ProgPhone = str(ProgInfo.find_all('a')[0+OffsetA].find('span').string)
         ProgPhone = ProgPhone[:3] + '.' + ProgPhone[3:6] + '.' + ProgPhone[6:]
         
