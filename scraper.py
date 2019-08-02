@@ -17,7 +17,7 @@ def parse_results(html):
 
     programs = []
     for r in programlist.findAll('li', recursive=False):
-        ProgId = r.get('id').string;
+        ProgId = r.get('id');
         Header1 = r.find('h5', attrs={'class': 'cbp-nttrigger cbp-first col-md-2 col-sm-3 col-xs-3'}).contents[0].string
         Header2 = r.find('span', attrs={'class': 'StateTitle'}).string
         Header3 = r.find('h3', attrs={'class' : 'cbp-nttrigger col-md-4 col-sm-3 col-xs-3'}).string
@@ -31,14 +31,6 @@ def parse_results(html):
         
         program = {
             'progid' : ProgId,
-            'header1': Header1,
-            'header2': Header2,
-            'header3': Header3,
-            'header4': Header4,
-            'header5': Header5,
-            'address': Address,
-            'proginfo': ProgInfo,
-            'website': Website,
         }
         
         programs.append(program)
