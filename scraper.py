@@ -19,9 +19,9 @@ def parse_results(html):
     for r in programlist.findAll('li', recursive=False):
         Header1 = r.find('h5', attrs={'class': 'cbp-nttrigger cbp-first col-md-2 col-sm-3 col-xs-3'}).contents[0]
         Header2 = r.find('span', attrs={'class': 'StateTitle'}).string
-        Header3 = r.find('h3', attrs={'class' : 'cbp-nttrigger col-md-4 col-sm-3 col-xs-3'}).contents[0]
-        Header4 = r.findall('h3', attrs={'class' : 'cbp-nttrigger col-md-3 col-sm-3 col-xs-3'})[0].contents[0]
-        Header5 = r.findall('h3', attrs={'class' : 'cbp-nttrigger col-md-3 col-sm-3 col-xs-3'})[1].contents[0]
+        Header3 = r.find('h3', attrs={'class' : 'cbp-nttrigger col-md-4 col-sm-3 col-xs-3'}).string
+        Header4 = r.findall('h3', attrs={'class' : 'cbp-nttrigger col-md-3 col-sm-3 col-xs-3'})[0].string
+        Header5 = r.findall('h3', attrs={'class' : 'cbp-nttrigger col-md-3 col-sm-3 col-xs-3'})[1].string
         
         Address = r.find('div', attrs={'class' : 'program-address col-md-6 col-sm-6 col-xs-6'}).contents[0]
         
