@@ -26,6 +26,9 @@ def parse_results(html):
         
         Address = r.find('div', attrs={'class' : 'program-address col-md-6 col-sm-6 col-xs-6'}).find('p')
         Address1 =  str(Address.contents[0].string)
+        Address2 =  str(Address.contents[1].string)
+        Address3 =  str(Address.contents[2].string)
+        Address4 =  str(Address.contents[3].string)
 
         
         ProgInfo = str(r.find('div', attrs={'class' : 'program-info col-md-6 col-sm-6 col-xs-6'}).contents[0].string)
@@ -42,6 +45,9 @@ def parse_results(html):
             'Profession': Profession,
             'Concentration': Concentration,
             'Address Line 1': Address1,
+            'Address Line 2': Address2,
+            'Address Line 3': Address3,
+            'Address Line 4': Address4,
             'proginfo': ProgInfo,
             'Website': Website,
         }
