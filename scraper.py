@@ -33,7 +33,9 @@ def parse_results(html):
         
         ProgInfo = r.find('div', attrs={'class' : 'program-info col-md-6 col-sm-6 col-xs-6'}).find('p')
         
-        ProgStatus = str(ProgInfo.contents[1].string)
+        Offset = 1 if (str(ProgInfo.contents[1].string) == "Status") else 0
+        
+        ProgStatus = str(ProgInfo.contents[1+Offset].string)
         ProgAccredDate = ""
         ProgDegrees = ""
         ProgDirector = ""
