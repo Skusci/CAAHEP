@@ -79,7 +79,7 @@ def parse_results(html):
             ('Program Outcomes', ProgOutcomes), 
             ('Director', ProgDirector),
             ('Phone' ,ProgPhone),
-            ('E-Mail' , ProgEmai)l,
+            ('E-Mail' , ProgEmail),
             ('Award Link' , ProgAward),
             ('Website', Website),
         ])
