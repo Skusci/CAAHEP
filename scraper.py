@@ -41,12 +41,13 @@ def parse_results(html):
         ProgStatus = str(ProgInfo.contents[1+Offset1].string)[2:]
         ProgAccredDate = str(ProgInfo.contents[5+Offset1].string)[2:]
         ProgDegrees = str(ProgInfo.contents[10+Offset1].string)
-        ProgDirector = str(ProgInfo.contents[16+Offset1-3*OffsetA].string)
         
         ProgOutcomes = str(ProgInfo.find_all('a')[0].get('href')) if (OffsetA == 1) else "Unavailable"
         
         if (OffsetA == 1) and (ProgOutcomes[:4] != "http"):
             ProgOutcomes = "http://" + ProgOutcomes
+            
+        ProgDirector = str(ProgInfo.contents[16+Offset1+0*OffsetA].string)
         
         
         ProgPhone = str(ProgInfo.find_all('a')[0+OffsetA].find('span').string)
