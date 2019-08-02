@@ -98,7 +98,7 @@ def get_pages():
     br.open(starting_page)
     # parse the page count and retrieve pages
     pages = []
-    for p in range(1, 90):
+    for p in range(88, 90):
         print 'Retrieving page %s' % p
         br.select_form(nr=0)
         br.form.set_all_readonly(False)
