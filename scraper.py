@@ -93,7 +93,7 @@ def get_pages():
     """
     Returns the HTML of all pages
     """
-    br = webdriver.Chrome()
+    br = webdriver.Chrome(options=options2, service_args=["--verbose"])
     br.get(starting_page)
     for p in range(85, 87):
         br.execute_script("__doPostBack('p$lt$WebPartZone6$Content$pageplaceholder$p$lt$WebPartZone2$Search$ProgramList$repItems$pager','" + str(p) + "')" )
