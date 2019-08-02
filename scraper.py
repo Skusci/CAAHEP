@@ -17,16 +17,16 @@ def parse_results(html):
 
     programs = []
     for r in programlist.findAll('li', recursive=False):
-        Header1 = r.find('h5', attrs={'class': 'cbp-nttrigger cbp-first col-md-2 col-sm-3 col-xs-3'}).contents.split("<")[0]
-        Header2 = r.find('span', attrs={'class': 'StateTitle'}).contents
-        Header3 = r.find('h3', attrs={'class' : 'cbp-nttrigger col-md-4 col-sm-3 col-xs-3'}).contents
-        Header4 = r.findall('h3', attrs={'class' : 'cbp-nttrigger col-md-3 col-sm-3 col-xs-3'})[0].contents
-        Header5 = r.findall('h3', attrs={'class' : 'cbp-nttrigger col-md-3 col-sm-3 col-xs-3'})[1].contents
+        Header1 = r.find('h5', attrs={'class': 'cbp-nttrigger cbp-first col-md-2 col-sm-3 col-xs-3'}).contents[0].split("<")[0]
+        Header2 = r.find('span', attrs={'class': 'StateTitle'}).contents[0]
+        Header3 = r.find('h3', attrs={'class' : 'cbp-nttrigger col-md-4 col-sm-3 col-xs-3'}).contents[0]
+        Header4 = r.findall('h3', attrs={'class' : 'cbp-nttrigger col-md-3 col-sm-3 col-xs-3'})[0].contents[0]
+        Header5 = r.findall('h3', attrs={'class' : 'cbp-nttrigger col-md-3 col-sm-3 col-xs-3'})[1].contents[0]
         
-        Address = r.find('div', attrs={'class' : 'program-address col-md-6 col-sm-6 col-xs-6'}).contents
+        Address = r.find('div', attrs={'class' : 'program-address col-md-6 col-sm-6 col-xs-6'}).contents[0]
         
-        ProgInfo = r.find('div', attrs={'class' : 'program-info col-md-6 col-sm-6 col-xs-6'}).contents
-        Website = r.find('h4', attrs={'class' : 'website'}).contents
+        ProgInfo = r.find('div', attrs={'class' : 'program-info col-md-6 col-sm-6 col-xs-6'}).contents[0]
+        Website = r.find('h4', attrs={'class' : 'website'}).contents[0]
         
         program = {
             'header1': Header1,
