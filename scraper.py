@@ -62,7 +62,7 @@ def parse_results(html):
         
         
         Website = r.find('h4', attrs={'class' : 'website'})
-        if Website == NoneType:
+        if Website is None:
             Website = ""
         else:
             Website = str(Website.contents[0].string)
