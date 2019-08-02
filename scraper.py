@@ -45,8 +45,8 @@ def parse_results(html):
         
         ProgOutcomes = str(ProgInfo.find_all('a')[0].get('href')) if (OffsetA == 1) else "Unavailable"
         
-        if (OffsetA == 1) and (ProgOutcomes[:4] != "href"):
-            ProgOutcomes = "href://" + ProgOutcomes
+        if (OffsetA == 1) and (ProgOutcomes[:4] != "http"):
+            ProgOutcomes = "http://" + ProgOutcomes
         
         
         ProgPhone = str(ProgInfo.find_all('a')[0+OffsetA].find('span').string)
