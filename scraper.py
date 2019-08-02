@@ -39,8 +39,8 @@ def parse_results(html):
         
         ProgStatus = str(ProgInfo.contents[1+Offset1].string)[2:]
         ProgAccredDate = str(ProgInfo.contents[5+Offset1].string)[2:]
-        ProgDegrees = str(ProgInfo.contents[9+Offset1].string)
-        ProgDirector = str(ProgInfo.contents[15+Offset1].string)
+        ProgDegrees = str(ProgInfo.contents[10+Offset1].string)
+        ProgDirector = str(ProgInfo.contents[16+Offset1].string)
         
         ProgOutComes = str(ProgInfo.find_all('a')[0].string) if (OffsetA == 1) else "Unavailable"
         ProgPhone = str(ProgInfo.find_all('a')[0+OffsetA].find('span').string)
