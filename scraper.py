@@ -61,7 +61,11 @@ def parse_results(html):
         ProgAward = str(ProgInfo.find_all('a')[2+OffsetA].get('href'))
         
         
-        Website = str(r.find('h4', attrs={'class' : 'website'}).contents[0].string)
+        Website = r.find('h4', attrs={'class' : 'website'})
+        if Website == NoneType:
+            Website = ""
+        else:
+            Website = str(Website.contents[0].string)
         
         program = OrderedDict([
             ('ProgramId' , ProgramId),
