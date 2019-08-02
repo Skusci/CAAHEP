@@ -1,2 +1,2 @@
 mechanize==0.4.2
-scraperwiki=0.5.1
+scraperwiki==0.5.1
