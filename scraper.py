@@ -3,6 +3,7 @@ import re
 import mechanize
 import datetime
 from bs4 import BeautifulSoup
+from collections import OrderedDict
 
 starting_page = 'https://www.caahep.org/Students/Find-a-Program.aspx'
 
