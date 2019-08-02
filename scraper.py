@@ -38,13 +38,13 @@ def parse_results(html):
         
         
         ProgStatus = str(ProgInfo.contents[1+Offset1].string)[2:]
-        ProgAccredDate = str(ProgInfo.contents[3+Offset1].string)
+        ProgAccredDate = str(ProgInfo.contents[4+Offset1].string)
         ProgDegrees = ""
         ProgDirector = ""
         
         ProgOutComes = str(ProgInfo.find_all('a')[0].string) if (OffsetA == 1) else "Unavailable"
         ProgPhone = str(ProgInfo.find_all('a')[0+OffsetA].string)
-        ProgPhone = ProgPhone[:2] + "." + ProgPhone[3:5] + "." + ProgPhone[6:]
+        ProgPhone = ProgPhone[:3] + "." + ProgPhone[3:6] + "." + ProgPhone[6:]
         
         ProgEmail = str(ProgInfo.find_all('a')[1+OffsetA].string)
         ProgAward = str(ProgInfo.find_all('a')[2+OffsetA].get('href'))
