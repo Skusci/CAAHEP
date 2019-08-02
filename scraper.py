@@ -61,13 +61,13 @@ def parse_results(html):
         
         Website = str(r.find('h4', attrs={'class' : 'website'}).contents[0].string)
         
-        program = OrderedDict({
+        program = OrderedDict([
             'ProgramId' : ProgramId,
-            'City': City,
-            'State': State,
             'Institution Name': Institution,
             'Profession': Profession,
             'Concentration': Concentration,
+            'City': City,
+            'State': State,    
             'Address Line 1': Address1,
             'Address Line 2': Address2,
             'Address Line 3': Address3,
@@ -82,7 +82,7 @@ def parse_results(html):
             'E-Mail' : ProgEmail,
             'Award Link' : ProgAward,
             'Website': Website,
-        })
+        ])
         
         programs.append(program)
     return programs
