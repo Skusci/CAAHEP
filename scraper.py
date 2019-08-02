@@ -1,6 +1,6 @@
 import scraperwiki    
 import re
-import mechanize
+from selenium import webdriver
 import datetime
 from bs4 import BeautifulSoup
 from collections import OrderedDict
@@ -93,21 +93,12 @@ def get_pages():
     """
     Returns the HTML of all pages
     """
-    br = mechanize.Browser()
-    br.addheaders = [('User-agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6')]
-    # agree to the disclaimer
-    br.open(starting_page)
-    # parse the page count and retrieve pages
-    pages = []
-    for p in range(85, 86):
+    br = webdriver.Firefox()
+    br.get(starting_page)
+    for p in range(85, 87):
+        br.execute_script("__doPostBack('p$lt$WebPartZone6$Content$pageplaceholder$p$lt$WebPartZone2$Search$ProgramList$repItems$pager','" + p + "');"                      
         print 'Retrieving page %s' % p
-        br.select_form(nr=0)
-        br.form.set_all_readonly(False)
-        br['__EVENTTARGET'] = "p$lt$WebPartZone6$Content$pageplaceholder$p$lt$WebPartZone2$Search$ProgramList$repItems$pager"
-        br['__EVENTARGUMENT'] = str(p)
-        # remove the "Search" (type=submit) input from the form, otherwise we get the first page of results over and over
-        response = br.submit()
-        pages.append(response.read())
+        pages.append(br.page_source)
     return pages
 
 
