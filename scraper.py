@@ -26,9 +26,9 @@ def parse_results(html):
         
         Address = r.find('div', attrs={'class' : 'program-address col-md-6 col-sm-6 col-xs-6'}).find('p')
         Address1 =  str(Address.contents[0].string)
-        Address2 =  str(Address.contents[1].string)
-        Address3 =  str(Address.contents[2].string)
-        Address4 =  str(Address.contents[3].string)
+        Address2 =  str(Address.contents[2].string)
+        Address3 =  str(Address.contents[4].string)
+        Address4 =  str(Address.contents[6].string)
 
         
         ProgInfo = str(r.find('div', attrs={'class' : 'program-info col-md-6 col-sm-6 col-xs-6'}).contents[0].string)
