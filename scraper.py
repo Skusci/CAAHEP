@@ -58,7 +58,7 @@ def get_pages():
         br.select_form(nr=0)
         br.form.set_all_readonly(False)
         br['__EVENTTARGET'] = "p$lt$WebPartZone6$Content$pageplaceholder$p$lt$WebPartZone2$Search$ProgramList$repItems$pager"
-        br['__EVENTARGUMENT'] = p
+        br['__EVENTARGUMENT'] = str(p)
         # remove the "Search" (type=submit) input from the form, otherwise we get the first page of results over and over
         response = br.submit()
         pages.append(response.read())
