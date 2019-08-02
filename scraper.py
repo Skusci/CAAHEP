@@ -29,6 +29,7 @@ def parse_results(html):
         Address2 =  str(Address.contents[2].string)
         Address3 =  str(Address.contents[4].string)
         Address4 =  str(Address.contents[6].string)
+        Address5 =  str(Address.contents[8].string)
 
         
         ProgInfo = r.find('div', attrs={'class' : 'program-info col-md-6 col-sm-6 col-xs-6'}).find('p')
@@ -47,7 +48,7 @@ def parse_results(html):
         if (OffsetA == 1) and (ProgOutcomes[:4] != "http"):
             ProgOutcomes = "http://" + ProgOutcomes
             
-        ProgDirector = str(ProgInfo.contents[16+Offset1+0*OffsetA].string)
+        ProgDirector = str(ProgInfo.contents[16+Offset1+1*OffsetA].string)
         
         
         ProgPhone = str(ProgInfo.find_all('a')[0+OffsetA].find('span').string)
