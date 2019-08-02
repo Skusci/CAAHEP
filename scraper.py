@@ -111,7 +111,7 @@ def get_pages():
    
     # Open the page you want...
     br.get(starting_page)
-
+    pages[]
     for p in range(85, 87):
         br.execute_script("__doPostBack('p$lt$WebPartZone6$Content$pageplaceholder$p$lt$WebPartZone2$Search$ProgramList$repItems$pager','" + str(p) + "')" )
         print("Retrieving page" + str(p))
