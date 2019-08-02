@@ -1,0 +1,1 @@
+This scraper takes a daily snapshot of the arrest/incident/accident reports from the CHPD web site.
