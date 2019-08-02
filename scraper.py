@@ -11,7 +11,7 @@ def parse_results(html):
     """
     Returns a list of dictionaries that describe the incidents in the given HTML.
     """
-    soup = BeautifulSoup(html)
+    soup = BeautifulSoup(html, "html5lib")
     
     programlist = soup.find('ul', attrs={'id': 'cbp-ntaccordion'})
 
