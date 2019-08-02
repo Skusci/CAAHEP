@@ -17,6 +17,7 @@ def parse_results(html):
 
     programs = []
     for r in programlist.findAll('li', recursive=False):
+        ProgId = r.get('id');
         Header1 = r.find('h5', attrs={'class': 'cbp-nttrigger cbp-first col-md-2 col-sm-3 col-xs-3'}).contents[0]
         Header2 = r.find('span', attrs={'class': 'StateTitle'}).string
         Header3 = r.find('h3', attrs={'class' : 'cbp-nttrigger col-md-4 col-sm-3 col-xs-3'}).string
@@ -29,6 +30,7 @@ def parse_results(html):
         Website = r.find('h4', attrs={'class' : 'website'}).contents[0]
         
         program = {
+            'progid' : ProgId,
             'header1': Header1,
             'header2': Header2,
             'header3': Header3,
@@ -74,4 +76,5 @@ for page in pages:
     results.extend(parse_results(page))
 
 print 'Found %s results, saving in scraperwiki' % len(results)
-scraperwiki.sqlite.save(['date', 'location'], results)
+
+scraperwiki.sqlite.save(['progid'], results)
